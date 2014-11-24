@@ -3,29 +3,35 @@
 $luckynumber = mt_rand(1, 100);
 $count = 0;
 
+if($argc == 3){
+	$luckynumber = mt_rand($argv[1], $argv[2]);
+}
+else {$luckynumber = $luckynumber;
+
+}
 
 do{	
 
-$count++;
+	$count++;
 
-fwrite(STDOUT, 'Guess a Number!' . PHP_EOL);
+	fwrite(STDOUT, 'Guess a Number!' . PHP_EOL);
 
-	$number = trim(fgets(STDIN));
-	if(is_numeric($number)){
+		$number = trim(fgets(STDIN));
+		if(is_numeric($number)){
 
-		if($number == $luckynumber){
-			echo 'Congradulations, You Won!' . PHP_EOL;
-		} 
-		elseif($number < $luckynumber){
-			fwrite(STDOUT, 'Higher' . PHP_EOL);
+			if($number == $luckynumber){
+				echo 'Congradulations, You Won!' . PHP_EOL;
+			} 
+			elseif($number < $luckynumber){
+				fwrite(STDOUT, 'Higher' . PHP_EOL);
+			}
+			else {
+				fwrite(STDOUT, 'Lower' . PHP_EOL);
+			}
 		}
-		else {
-			fwrite(STDOUT, 'Lower' . PHP_EOL);
+		else{
+			fwrite(STDOUT, "Sorry, Please input numeric value\n");
 		}
-	}
-	else{
-		fwrite(STDOUT, "Sorry, Please input numeric value\n");
-	}
 
 } while($number != $luckynumber);
 
