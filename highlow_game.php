@@ -1,10 +1,12 @@
 <?php
 
-$luckynumber = rand(1, 100);
-
+$luckynumber = mt_rand(1, 100);
+$count = 0;
 
 
 do{	
+
+$count++;
 
 fwrite(STDOUT, 'Guess a Number!' . PHP_EOL);
 
@@ -22,3 +24,4 @@ $number = fgets(STDIN);
 
 } while($number != $luckynumber);
 
+echo "It took you $count tries to get it correct\n";
